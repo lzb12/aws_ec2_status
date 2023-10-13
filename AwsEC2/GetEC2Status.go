@@ -12,9 +12,9 @@ import (
 
 var svc *ec2.EC2
 
-func GetInstances(Region string) (*ec2.DescribeInstanceStatusOutput, error) {
+func GetInstances(awsid, aws_secret, Region string) (*ec2.DescribeInstanceStatusOutput, error) {
 	sess, _ := session.NewSession(&aws.Config{
-		Credentials: credentials.NewStaticCredentials("", "", ""),
+		Credentials: credentials.NewStaticCredentials(awsid, aws_secret, ""),
 		Region:      aws.String(Region),
 	})
 	svc = ec2.New(sess)
@@ -47,8 +47,8 @@ func GetEc2Ipaddr(instanceids string) (publicipaddr, privateipaddr string) {
 	return "", ""
 }
 
-func GetEc2Status(Region, corpid, corpsecret, toUser string, agentid int) {
-	result, err := GetInstances(Region)
+func GetEc2Status(awsid, aws_secret, Region, corpid, corpsecret, toUser string, agentid int) {
+	result, err := GetInstances(awsid, aws_secret, Region)
 	if err != nil {
 		fmt.Println("Got an error retrieving information about your Amazon EC2 instances:")
 		fmt.Println(err.Error())
