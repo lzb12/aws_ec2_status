@@ -1,3 +1,10 @@
-# aws_ec2_status
-使用脚本定时监测aws中ec2的检查是否通过。没有通过 则发送至企业微信
+本地开发
+环境要求
+go 1.20.3
 
+
+dockerfile
+
+docker build -t aws_ec2_status:1.0 .
+
+docker run --name aws_ec2_status  aws_ec2_status:1.0 -r "ap-northeast-1" -corpid "" -corpsecret "" -touser "" -agentid 100 -awsid "" -aws_secret ""
