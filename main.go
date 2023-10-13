@@ -16,6 +16,8 @@ func main() {
 	flag.StringVar(&corpsecret, "corpsecret", "", "Default enterprise WeChat")
 	flag.StringVar(&toUser, "touser", "", "Notifiers are separated using |")
 	flag.IntVar(&agentid, "agentid", 1, "Default enterprise WeChat")
+	flag.StringVar(&awsid, "awsid", "", "aws-id")
+	flag.StringVar(&aws_secret, "aws_secret", "", "aws_secret")
 	flag.Parse()
 	awsec2.GetEc2Status(region, corpid, corpsecret, toUser, agentid)
 
