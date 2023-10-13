@@ -10,7 +10,10 @@ func main() {
 	var corpid string
 	var corpsecret string
 	var toUser string
+	var awsid string
+	var aws_secret string
 	var agentid int
+
 	flag.StringVar(&region, "r", "ap-northeast-1", "aws region,The default is ap-northeast-1")
 	flag.StringVar(&corpid, "corpid", "", "Default enterprise WeChat")
 	flag.StringVar(&corpsecret, "corpsecret", "", "Default enterprise WeChat")
@@ -19,6 +22,6 @@ func main() {
 	flag.StringVar(&awsid, "awsid", "", "aws-id")
 	flag.StringVar(&aws_secret, "aws_secret", "", "aws_secret")
 	flag.Parse()
-	awsec2.GetEc2Status(region, corpid, corpsecret, toUser, agentid)
+	awsec2.GetEc2Status(awsid, aws_secret, region, corpid, corpsecret, toUser, agentid)
 
 }
